@@ -82,7 +82,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			orientation: "vertical",
 			range: "min",
 			min: 0,
-			max: 20,
+			max: 4,
 			value: 1,
 			slide: function( event, ui ) {
 				m = ui.value;
@@ -105,11 +105,14 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			value: 40,
 			slide: function( event, ui ) {
 				c = ui.value;
-				var x1 = xMin-0.25,
-				    y1 = m * x1 + c,
+				var x1 = xMin - 0.25,
+				    y1 = x1 + c,
 				    x2 = xMax + 0.25,
-				    y2 = yMax + 0.25;
-				line.datum([[x1, y1], [x2, y2]])
+				    y2 = m * x2 + c;
+				var chart = d3.select("body").transition();
+				chart.select(".line")
+					.duration(750)
+					.attr("d", lineGenerator([[x1, y1], [x2, y2]]));
 			}
 		});
 	} );
