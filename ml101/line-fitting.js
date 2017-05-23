@@ -74,6 +74,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr("stroke-linecap", "round")
 		.attr("stroke-width", 1.5)
 // 		.attr("d", pathString);
+		.attr("class", "line")
 		.attr("d", lineGenerator);
 	
 	$( function() {
@@ -89,7 +90,10 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				    y1 = m * x1 + c,
 				    x2 = xMax + 0.25,
 				    y2 = yMax + 0.25;
-				line.datum([[x1, y1], [x2, y2]])
+				var chart = d3.select("body").transition();
+				chart.select(".line")
+					.duration(750)
+					.lineGenerator([[x1, y1], [x2, y2]])
 			}
 		});
 		$("#constant").slider({
