@@ -83,7 +83,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			  .attr("cy", function (d) { return y(d.DailySale); } )
 			  .attr("r", 4);
 
-	var m = 1, c = 40.08
+	var m = 1.08, c = 38.08
 	var lineGenerator = d3.svg.line()
 				.x(function(d) {return x(d[0]);})
 				.y(function(d) {return y(d[1]);});
@@ -107,7 +107,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			min: 1,
 			max: 1.5,
 			step: 0.01,
-			value: 1,
+			value: 1.08,
 			slide: function( event, ui ) {
 				m = ui.value;
 				var x1 = xMin - 0.25,
@@ -128,7 +128,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			min: 38.08,
 			max: 42.08,
 			step: 0.01,
-			value: 40,
+			value: 38.08,
 			slide: function( event, ui ) {
 				c = ui.value;
 				var x1 = xMin - 0.25,
