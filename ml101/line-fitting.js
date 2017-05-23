@@ -10,11 +10,11 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 		  , height = 500 - margin.top - margin.bottom;
 	console.log(data);
 	var x = d3.scale.linear()
-				.domain([0, d3.max(data, function(d) { console.log(d);return d[0]; })])
+				.domain([0, d3.max(data, function(d) { console.log(d);return d.SFt; })])
 				.range([ 0, width ]);
 	
 	var y = d3.scale.linear()
-				.domain([0, d3.max(data, function(d) { console.log(d);return d[1]; })])
+				.domain([0, d3.max(data, function(d) { console.log(d);return d.DailySale; })])
 				.range([ height, 0 ]);
  
 	var chart = d3.select('body')
@@ -53,8 +53,8 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 	g.selectAll("scatter-dots")
 		  .data(data)
 		  .enter().append("svg:circle")
-			  .attr("cx", function (d,i) { console.log(d[0]);return x(d[0]); } )
-			  .attr("cy", function (d) { return y(d[1]); } )
+			  .attr("cx", function (d,i) { console.log(d.SFt);return x(d.SFt); } )
+			  .attr("cy", function (d) { return y(d.DailySale); } )
 			  .attr("r", 8);
           
 });
