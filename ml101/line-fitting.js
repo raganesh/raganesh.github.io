@@ -1,4 +1,4 @@
-d3.csv("sales_per_sft_small.csv", function(data, error) {
+d3.csv("sales_per_sft_full.csv", function(data, error) {
 	data.forEach(function(d) {
 		d.SFt = +d.SFt;
 		d.DailySale = +d.DailySale;
@@ -65,7 +65,7 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 				.y(function(d) {return y(d[1]);});
 // 	var pathString = lineGenerator([[x(xMin), y(yMin)], [x(xMax), y(yMax)]]);
 	g.append("path")
-		.datum([[xMin-0.75, yMin-0.75], [xMax+0.75, yMax+0.75]])
+		.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
 		.attr("fill", "none")
 		.attr("stroke", "steelblue")
 		.attr("stroke-linejoin", "round")
