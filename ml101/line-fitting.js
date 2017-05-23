@@ -1,8 +1,6 @@
 var data = [[5,3], [10,17], [15,4], [2,8]];
 
 d3.csv("sales_per_sft_small.csv", function(data, error) {
-	console.log(error);
-	console.log(data);
 	var margin = {top: 20, right: 15, bottom: 60, left: 60}
 		  , width = 960 - margin.left - margin.right
 		  , height = 500 - margin.top - margin.bottom;
@@ -51,7 +49,7 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 	g.selectAll("scatter-dots")
 		  .data(data)
 		  .enter().append("svg:circle")
-			  .attr("cx", function (d,i) { return x(d[0]); } )
+			  .attr("cx", function (d,i) { console.log(d[0]);return x(d[0]); } )
 			  .attr("cy", function (d) { return y(d[1]); } )
 			  .attr("r", 8);
           
