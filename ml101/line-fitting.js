@@ -68,8 +68,9 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.text("Daily Sales ('000 $)");
 
 	// text label for the equation
-	main.append("text")
+	var equation = main.append("text")
 		.attr("transform", "translate(" + (width) + " ," + (height - margin.top - 30) + ")")
+		.attr("fill", "red")
 		.style("text-anchor", "end")
 		.style("font-size", "30")
 		.text("y = mx + c");
@@ -117,6 +118,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				chart.select(".line")
 					.duration(750)
 					.attr("d", lineGenerator([[x1, y1], [x2, y2]]));
+				equation.text("y = "+m+"x + "+c)
 // 					.datum([[x1, y1], [x2, y2]]);
 			}
 		});
@@ -137,6 +139,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				chart.select(".line")
 					.duration(750)
 					.attr("d", lineGenerator([[x1, y1], [x2, y2]]));
+				equation.text("y = "+m+"x + "+c)
 			}
 		});
 	} );
