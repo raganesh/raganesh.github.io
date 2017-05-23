@@ -55,6 +55,6 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 		  .enter().append("svg:circle")
 			  .attr("cx", function (d,i) { return x(d.SFt); } )
 			  .attr("cy", function (d) { return y(d.DailySale); } )
-			  .attr("r", 8);
+			  .attr("r", 4);
           
 });
