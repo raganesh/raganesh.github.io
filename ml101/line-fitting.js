@@ -20,6 +20,11 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			.domain([yMin - 1, yMax + 1])
 			.range([ height, 0 ]);
  
+	// Define the div for the tooltip
+	var tooltip = d3.select("body").append("div")
+			.attr("class", "tooltip")
+			.style("opacity", 0);
+
 	var chart = d3.select('.content')
 		.append('svg:svg')
 		.attr('width', width + margin.right + margin.left)
@@ -69,11 +74,24 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 
 	var g = main.append("svg:g"); 
 	g.selectAll("scatter-dots")
-		  .data(data)
-		  .enter().append("svg:circle")
-			  .attr("cx", function (d,i) { return x(d.SFt); } )
-			  .attr("cy", function (d) { return y(d.DailySale); } )
-			  .attr("r", 4);
+		.data(data)
+		.enter().append("svg:circle")
+			.attr("cx", function (d,i) { return x(d.SFt); } )
+			.attr("cy", function (d) { return y(d.DailySale); } )
+			.attr("r", 4)
+			.on("mouseover", function(d) {
+				tooltip.transition()
+					.duration(200)
+					.style("opacity", .9);
+				tooltip.html("Area: " + d.SFt + " '000 Square Foot.<br/>Daily Sales: " + d.DailySale + " '000 $")	
+					.style("left", (d3.event.pageX) + "px")
+					.style("top", (d3.event.pageY - 28) + "px");
+			})
+			.on("mouseout", function(d) {
+				tooltip.transition()
+					.duration(500)
+					.style("opacity", 0);
+			});
 
 	var m = 1.04, c = 38.08
 	var lineGenerator = d3.svg.line()
