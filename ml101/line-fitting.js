@@ -81,8 +81,9 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		$("#slope").slider({
 			orientation: "vertical",
 			range: "min",
-			min: 0,
-			max: 4,
+			min: 0.5,
+			max: 2,
+			step: 0.1,
 			value: 1,
 			slide: function( event, ui ) {
 				m = ui.value;
@@ -100,8 +101,9 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		$("#constant").slider({
 			orientation: "vertical",
 			range: "min",
-			min: 20,
-			max: 60,
+			min: 38.08,
+			max: 42.08,
+			step: 0.1,
 			value: 40,
 			slide: function( event, ui ) {
 				c = ui.value;
