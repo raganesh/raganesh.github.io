@@ -82,7 +82,8 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 // 				.y(function(d) {return y(m * d[0] + c);});
 
 	var line = g.append("path")
-		.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
+// 		.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
+		.datum([[xMin-0.25, xMin - 0.25 + c], [xMax+0.25, m * (xMax+0.25) + c]])
 		.attr("fill", "none")
 		.attr("stroke", "red")
 		.attr("stroke-linejoin", "round")
