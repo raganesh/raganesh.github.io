@@ -1,5 +1,3 @@
-var data = [[5,3], [10,17], [15,4], [2,8]];
-
 d3.csv("sales_per_sft_small.csv", function(data, error) {
 	data.forEach(function(d) {
 		d.SFt = +d.SFt;
@@ -62,7 +60,7 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 			  .attr("cy", function (d) { return y(d.DailySale); } )
 			  .attr("r", 4);
 
-	var lineGenerator = d3.line();
+	var lineGenerator = d3.svg.line();
 	var pathString = lineGenerator([[xMin, yMin], [xMax, yMax]]);
 	main.append("path")
 		.attr('d', pathString);
