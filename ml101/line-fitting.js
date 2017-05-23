@@ -86,10 +86,10 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			value: 1,
 			slide: function( event, ui ) {
 				m = ui.value;
-				var x1 = xMin-0.25,
+				var x1 = xMin - 0.25,
 				    y1 = m * x1 + c,
 				    x2 = xMax + 0.25,
-				    y2 = yMax + 0.25;
+				    y2 = m * x2 + c;
 				var chart = d3.select("body").transition();
 				chart.select(".line")
 					.duration(750)
