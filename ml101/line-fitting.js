@@ -60,9 +60,10 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			  .attr("cy", function (d) { return y(d.DailySale); } )
 			  .attr("r", 4);
 
+	var m = 1, c = 40.08
 	var lineGenerator = d3.svg.line()
 				.x(function(d) {return x(d[0]);})
-				.y(function(d) {return y(d[1]);});
+				.y(function(d) {return y(m * d[0] + c);});
 // 	var pathString = lineGenerator([[x(xMin), y(yMin)], [x(xMax), y(yMax)]]);
 	g.append("path")
 		.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
