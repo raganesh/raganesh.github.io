@@ -92,8 +92,8 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				    y2 = yMax + 0.25;
 				var chart = d3.select("body").transition();
 				chart.select(".line")
-					.duration(750)
-					.datum([[x1, y1], [x2, y2]])
+					.duration(750);
+// 					.datum([[x1, y1], [x2, y2]]);
 			}
 		});
 		$("#constant").slider({
