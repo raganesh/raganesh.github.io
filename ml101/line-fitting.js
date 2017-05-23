@@ -93,7 +93,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 	
 	$( function() {
 		$("#slope").slider({
-			orientation: "vertical",
+			orientation: "horizontal",
 			range: "min",
 			min: 1,
 			max: 1.5,
@@ -113,7 +113,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			}
 		});
 		$("#constant").slider({
-			orientation: "vertical",
+			orientation: "horizontal",
 			range: "min",
 			min: 38.08,
 			max: 42.08,
