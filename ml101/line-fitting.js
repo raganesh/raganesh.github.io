@@ -8,7 +8,7 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 	var margin = {top: 20, right: 15, bottom: 60, left: 60}
 		  , width = 960 - margin.left - margin.right
 		  , height = 500 - margin.top - margin.bottom;
-	console.log(data);
+
 	var x = d3.scale.linear()
 			.domain([d3.min(data, function(d) { return d.SFt; }), d3.max(data, function(d) { return d.SFt; })])
 			.range([ 0, width ]);
@@ -53,7 +53,7 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 	g.selectAll("scatter-dots")
 		  .data(data)
 		  .enter().append("svg:circle")
-			  .attr("cx", function (d,i) { console.log(d.SFt);return x(d.SFt); } )
+			  .attr("cx", function (d,i) { return x(d.SFt); } )
 			  .attr("cy", function (d) { return y(d.DailySale); } )
 			  .attr("r", 8);
           
