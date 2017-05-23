@@ -58,6 +58,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr('class', 'main axis date')
 		.call(yAxis);
 
+	// text label for the y axis
 	main.append("text")
 		.attr("class", "y label")
 		.attr("text-anchor", "end")
@@ -65,6 +66,13 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr("dy", ".75em")
 		.attr("transform", "rotate(-90)")
 		.text("Daily Sales ('000 $)");
+
+	// text label for the equation
+	main.append("text")
+		.attr("transform", "translate(" + (width) + " ," + (height - margin.top - 30) + ")")
+		.style("text-anchor", "end")
+		.style("font-size", "30")
+		.text("y = mx + c");
 
 	var g = main.append("svg:g"); 
 	g.selectAll("scatter-dots")
