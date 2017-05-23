@@ -10,11 +10,11 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 		  , height = 500 - margin.top - margin.bottom;
 	console.log(data);
 	var x = d3.scale.linear()
-				.domain([0, d3.max(data, function(d) { console.log(d[0]);return d[0]; })])
+				.domain([0, d3.max(data, function(d) { console.log(d);return d[0]; })])
 				.range([ 0, width ]);
 	
 	var y = d3.scale.linear()
-				.domain([0, d3.max(data, function(d) { console.log(d[1]);return d[1]; })])
+				.domain([0, d3.max(data, function(d) { console.log(d);return d[1]; })])
 				.range([ height, 0 ]);
  
 	var chart = d3.select('body')
