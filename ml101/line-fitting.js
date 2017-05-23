@@ -58,7 +58,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr('class', 'main axis date')
 		.call(yAxis);
 
-	svg.append("text")
+	main.append("text")
 		.attr("class", "y label")
 		.attr("text-anchor", "end")
 		.attr("y", 6)
