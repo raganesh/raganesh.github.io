@@ -10,7 +10,7 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 		  , height = 500 - margin.top - margin.bottom;
 	console.log(data);
 	var x = d3.scale.linear()
-			.domain([0, d3.max(data, function(d) { return d.SFt; })])
+			.domain([d3.min(data, function(d) { return d.SFt; }), d3.max(data, function(d) { return d.SFt; })])
 			.range([ 0, width ]);
 	
 	var y = d3.scale.linear()
