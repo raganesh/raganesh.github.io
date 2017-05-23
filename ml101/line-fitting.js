@@ -63,6 +63,11 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 	var lineGenerator = d3.svg.line();
 	var pathString = lineGenerator([[x(xMin), y(yMin)], [x(xMax), y(yMax)]]);
 	g.append("path")
+		.attr("fill", "none")
+		.attr("stroke", "steelblue")
+		.attr("stroke-linejoin", "round")
+		.attr("stroke-linecap", "round")
+		.attr("stroke-width", 1.5)
 		.attr('d', pathString);
 	
 });
