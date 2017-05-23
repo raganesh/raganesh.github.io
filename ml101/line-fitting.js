@@ -9,12 +9,17 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 		  , width = 960 - margin.left - margin.right
 		  , height = 500 - margin.top - margin.bottom;
 
+	var xMin = d3.min(data, function(d) { return d.SFt; })
+		, xMax = d3.max(data, function(d) { return d.SFt; })
+		, yMin = d3.min(data, function(d) { return d.DailySale; })
+		, yMax = d3.max(data, function(d) { return d.DailySale; });
+
 	var x = d3.scale.linear()
-			.domain([d3.min(data, function(d) { return d.SFt; })-1, d3.max(data, function(d) { return d.SFt; })+1])
+			.domain([xMin - 1, xMax + 1])
 			.range([ 0, width ]);
 	
 	var y = d3.scale.linear()
-			.domain([d3.min(data, function(d) { return d.DailySale; })-1, d3.max(data, function(d) { return d.DailySale; })+1])
+			.domain([yMin - 1, yMax + 1])
 			.range([ height, 0 ]);
  
 	var chart = d3.select('body')
