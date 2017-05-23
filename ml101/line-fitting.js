@@ -4,7 +4,7 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 	var margin = {top: 20, right: 15, bottom: 60, left: 60}
 		  , width = 960 - margin.left - margin.right
 		  , height = 500 - margin.top - margin.bottom;
-	
+	console.log(data);
 	var x = d3.scale.linear()
 				.domain([0, d3.max(data, function(d) { console.log(d[0]);return d[0]; })])
 				.range([ 0, width ]);
