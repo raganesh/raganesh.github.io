@@ -20,7 +20,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			.domain([yMin - 1, yMax + 1])
 			.range([ height, 0 ]);
  
-	var chart = d3.select('body')
+	var chart = d3.select('.content')
 		.append('svg:svg')
 		.attr('width', width + margin.right + margin.left)
 		.attr('height', height + margin.top + margin.bottom)
