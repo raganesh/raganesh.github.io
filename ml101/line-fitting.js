@@ -78,8 +78,8 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 	var m = 1.04, c = 38.08
 	var lineGenerator = d3.svg.line()
 				.x(function(d) {return x(d[0]);})
-// 				.y(function(d) {return y(d[1]);});
-				.y(function(d) {return y(m * d[0] + c);});
+				.y(function(d) {return y(d[1]);});
+// 				.y(function(d) {return y(m * d[0] + c);});
 
 	var line = g.append("path")
 		.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
