@@ -65,7 +65,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				.x(function(d) {return x(d[0]);})
 				.y(function(d) {return y(m * d[0] + c);});
 // 	var pathString = lineGenerator([[x(xMin), y(yMin)], [x(xMax), y(yMax)]]);
-	g.append("path")
+	var line = g.append("path")
 		.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
 		.attr("fill", "none")
 		.attr("stroke", "steelblue")
@@ -75,4 +75,29 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 // 		.attr("d", pathString);
 		.attr("d", lineGenerator);
 	
+	$( function() {
+		$("#slope").slider({
+			orientation: "vertical",
+			range: "min",
+			min: 0,
+			max: 20,
+			value: 1,
+			slide: function( event, ui ) {
+				m = ui.value;
+				line.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
+			}
+		});
+		$("#constant").slider({
+			orientation: "vertical",
+			range: "min",
+			min: 20,
+			max: 60,
+			value: 40,
+			slide: function( event, ui ) {
+				c = ui.value;
+				line.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
+			}
+		});
+	} );
+
 });
