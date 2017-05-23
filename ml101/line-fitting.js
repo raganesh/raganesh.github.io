@@ -42,6 +42,12 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr('class', 'main axis date')
 		.call(xAxis);
 
+	// text label for the x axis
+	main.append("text")
+		.attr("transform", "translate(" + (width/2) + " ," + (height + margin.top + 20) + ")")
+		.style("text-anchor", "middle")
+		.text("Area in Square Foot ('000)");
+
 	// draw the y axis
 	var yAxis = d3.svg.axis()
 		.scale(y)
@@ -51,6 +57,14 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr('transform', 'translate(0,0)')
 		.attr('class', 'main axis date')
 		.call(yAxis);
+
+	svg.append("text")
+		.attr("class", "y label")
+		.attr("text-anchor", "end")
+		.attr("y", 6)
+		.attr("dy", ".75em")
+		.attr("transform", "rotate(-90)")
+		.text("Dail Sales ('000 $)");
 
 	var g = main.append("svg:g"); 
 	g.selectAll("scatter-dots")
