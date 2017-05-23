@@ -44,7 +44,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 
 	// text label for the x axis
 	main.append("text")
-		.attr("transform", "translate(" + (width/2) + " ," + (height + margin.top) + ")")
+		.attr("transform", "translate(" + (width) + " ," + (height) + ")")
 		.style("text-anchor", "end")
 		.text("Area in Square Foot ('000)");
 
