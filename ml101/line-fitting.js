@@ -63,7 +63,8 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 	var m = 1, c = 40.08
 	var lineGenerator = d3.svg.line()
 				.x(function(d) {return x(d[0]);})
-				.y(function(d) {return y(m * d[0] + c);});
+				.y(function(d) {return y(d[1]);});
+// 				.y(function(d) {return y(m * d[0] + c);});
 // 	var pathString = lineGenerator([[x(xMin), y(yMin)], [x(xMax), y(yMax)]]);
 	var line = g.append("path")
 		.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
@@ -84,7 +85,11 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			value: 1,
 			slide: function( event, ui ) {
 				m = ui.value;
-				line.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
+				var x1 = xMin-0.25,
+				    y1 = m * x1 + c,
+				    x2 = xMax + 0.25,
+				    y2 = yMax + 0.25;
+				line.datum([[x1, y1], [x2, y2]])
 			}
 		});
 		$("#constant").slider({
@@ -95,7 +100,11 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			value: 40,
 			slide: function( event, ui ) {
 				c = ui.value;
-				line.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
+				var x1 = xMin-0.25,
+				    y1 = m * x1 + c,
+				    x2 = xMax + 0.25,
+				    y2 = yMax + 0.25;
+				line.datum([[x1, y1], [x2, y2]])
 			}
 		});
 	} );
