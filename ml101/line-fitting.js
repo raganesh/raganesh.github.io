@@ -83,7 +83,7 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				tooltip.transition()
 					.duration(200)
 					.style("opacity", .9);
-				tooltip.html("Area: " + d.SFt + " '000 Square Foot.<br/>Daily Sales: " + d.DailySale + " '000 $")	
+				tooltip.html("Area: " + d.SFt + " ('000 Square Foot.)<br/>Daily Sales: " + d.DailySale + " ('000 $)")	
 					.style("left", (d3.event.pageX) + "px")
 					.style("top", (d3.event.pageY - 28) + "px");
 			})
