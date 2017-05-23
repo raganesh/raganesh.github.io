@@ -92,7 +92,19 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr("class", "line")
 		.attr("d", lineGenerator);
 	
-	// text label for the equation
+	// text labels for the m, c & equation
+	var mLabel = main.append("text")
+		.attr("transform", "translate(" + (width) + " ," + (height - margin.top - 70) + ")")
+		.attr("fill", "green")
+		.style("text-anchor", "end")
+		.style("font-size", "30")
+		.text("m = "+m)
+	var cLabel = main.append("text")
+		.attr("transform", "translate(" + (width) + " ," + (height - margin.top - 50) + ")")
+		.attr("fill", "green")
+		.style("text-anchor", "end")
+		.style("font-size", "30")
+		.text("c = "+c)
 	var equation = main.append("text")
 		.attr("transform", "translate(" + (width) + " ," + (height - margin.top - 30) + ")")
 		.attr("fill", "red")
@@ -118,7 +130,8 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				chart.select(".line")
 					.duration(750)
 					.attr("d", lineGenerator([[x1, y1], [x2, y2]]));
-				equation.text("y = "+m+"x + "+c)
+				mLabel.text("m = "+m);
+				equation.text("y = "+m+"x + "+c);
 // 					.datum([[x1, y1], [x2, y2]]);
 			}
 		});
@@ -139,7 +152,8 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				chart.select(".line")
 					.duration(750)
 					.attr("d", lineGenerator([[x1, y1], [x2, y2]]));
-				equation.text("y = "+m+"x + "+c)
+				cLabel.text("c = "+c);
+				equation.text("y = "+m+"x + "+c);
 			}
 		});
 	} );
