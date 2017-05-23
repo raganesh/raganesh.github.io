@@ -1,7 +1,7 @@
 var data = [[5,3], [10,17], [15,4], [2,8]];
 
 d3.csv("sales_per_sft_small.csv", function(error, data) {
-	
+	console.log(data);
 	var margin = {top: 20, right: 15, bottom: 60, left: 60}
 		  , width = 960 - margin.left - margin.right
 		  , height = 500 - margin.top - margin.bottom;
