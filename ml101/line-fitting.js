@@ -61,5 +61,10 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 			  .attr("cx", function (d,i) { return x(d.SFt); } )
 			  .attr("cy", function (d) { return y(d.DailySale); } )
 			  .attr("r", 4);
-          
+
+	var lineGenerator = d3.line();
+	var pathString = lineGenerator([[xMin, yMin], [xMax, yMax]]);
+	main.append("path")
+		.attr('d', pathString);
+	
 });
