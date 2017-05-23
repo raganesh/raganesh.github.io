@@ -67,14 +67,6 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr("transform", "rotate(-90)")
 		.text("Daily Sales ('000 $)");
 
-	// text label for the equation
-	var equation = main.append("text")
-		.attr("transform", "translate(" + (width) + " ," + (height - margin.top - 30) + ")")
-		.attr("fill", "red")
-		.style("text-anchor", "end")
-		.style("font-size", "30")
-		.text("y = mx + c");
-
 	var g = main.append("svg:g"); 
 	g.selectAll("scatter-dots")
 		  .data(data)
@@ -83,12 +75,12 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 			  .attr("cy", function (d) { return y(d.DailySale); } )
 			  .attr("r", 4);
 
-	var m = 1.08, c = 38.08
+	var m = 1.04, c = 38.08
 	var lineGenerator = d3.svg.line()
 				.x(function(d) {return x(d[0]);})
-				.y(function(d) {return y(d[1]);});
-// 				.y(function(d) {return y(m * d[0] + c);});
-// 	var pathString = lineGenerator([[x(xMin), y(yMin)], [x(xMax), y(yMax)]]);
+// 				.y(function(d) {return y(d[1]);});
+				.y(function(d) {return y(m * d[0] + c);});
+
 	var line = g.append("path")
 		.datum([[xMin-0.25, yMin-0.25], [xMax+0.25, yMax+0.25]])
 		.attr("fill", "none")
@@ -96,18 +88,25 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 		.attr("stroke-linejoin", "round")
 		.attr("stroke-linecap", "round")
 		.attr("stroke-width", 1.5)
-// 		.attr("d", pathString);
 		.attr("class", "line")
 		.attr("d", lineGenerator);
 	
+	// text label for the equation
+	var equation = main.append("text")
+		.attr("transform", "translate(" + (width) + " ," + (height - margin.top - 30) + ")")
+		.attr("fill", "red")
+		.style("text-anchor", "end")
+		.style("font-size", "30")
+		.text("y = "+m+"x + "+c)
+
 	$( function() {
 		$("#slope").slider({
 			orientation: "horizontal",
 			range: "min",
-			min: 1,
+			min: 1.04,
 			max: 1.5,
 			step: 0.01,
-			value: 1.08,
+			value: 1.04,
 			slide: function( event, ui ) {
 				m = ui.value;
 				var x1 = xMin - 0.25,
