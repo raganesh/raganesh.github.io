@@ -90,10 +90,10 @@ d3.csv("sales_per_sft_full.csv", function(data, error) {
 				    y1 = m * x1 + c,
 				    x2 = xMax + 0.25,
 				    y2 = yMax + 0.25;
-				lineGenerator([[x1, y1], [x2, y2]]);
 				var chart = d3.select("body").transition();
 				chart.select(".line")
 					.duration(750);
+					.attr("d", lineGenerator([[x1, y1], [x2, y2]]));
 // 					.datum([[x1, y1], [x2, y2]]);
 			}
 		});
