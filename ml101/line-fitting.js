@@ -62,7 +62,7 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 
 	var lineGenerator = d3.svg.line();
 	var pathString = lineGenerator([[xMin, yMin], [xMax, yMax]]);
-	main.append("path")
+	g.append("path")
 		.attr('d', pathString);
 	
 });
