@@ -60,14 +60,18 @@ d3.csv("sales_per_sft_small.csv", function(data, error) {
 			  .attr("cy", function (d) { return y(d.DailySale); } )
 			  .attr("r", 4);
 
-	var lineGenerator = d3.svg.line();
-	var pathString = lineGenerator([[x(xMin), y(yMin)], [x(xMax), y(yMax)]]);
+	var lineGenerator = d3.svg.line()
+				.x(function(d) {return d[0];})
+				.y(function(d) {return d[1];});
+// 	var pathString = lineGenerator([[x(xMin), y(yMin)], [x(xMax), y(yMax)]]);
 	g.append("path")
+		.datum([[x(xMin), y(yMin)], [x(xMax), y(yMax)]])
 		.attr("fill", "none")
 		.attr("stroke", "steelblue")
 		.attr("stroke-linejoin", "round")
 		.attr("stroke-linecap", "round")
 		.attr("stroke-width", 1.5)
-		.attr('d', pathString);
+// 		.attr("d", pathString);
+		.attr("d", lineGenerator);
 	
 });
